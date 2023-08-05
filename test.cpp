@@ -4,6 +4,7 @@ using namespace std;
 int main()
 {
     DynamicJsonDocument config(256);
+    DynamicJsonDocument _config(256);
     config["mode"] = "ap";
     config["wifi"]["ssid"] = "Lamp_Contorl";
     config["wifi"]["pwd"] = "password";
@@ -13,7 +14,8 @@ int main()
     config["led"]["same"] = "true";
     config["led"]["color"] = "0xFFFFFF";
 
-    cout<<config["wifi"];
+    _config["wifi"] = config["wifi"];
+    cout << _config["wifi"];
     // deserializeJson(config,"{\"mode\":\"dd\"}");
     // cout<<config["led"]["power"]<<"||"<<config["mode"]<<'\n';
     // if(config["led"]["power"].isNull()) cout<<"YES";

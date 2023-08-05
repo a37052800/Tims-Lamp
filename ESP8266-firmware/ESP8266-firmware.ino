@@ -10,7 +10,7 @@ void setup()
   if (config_file)
     deserializeJson(config, config_file);
   else
-    config = initConfig();
+    initConfig();
   config_file.close();
   setNetService();
   applyLEDConfig();
@@ -28,4 +28,5 @@ void loop()
     digitalWrite(LED_BUILTIN, HIGH);
     delay(500);
   }
+  digitalWrite(LED_BUILTIN, HIGH);
 }

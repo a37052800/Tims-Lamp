@@ -13,7 +13,7 @@ DynamicJsonDocument config(256);
 CRGB leds[128];
 
 void initConfig();
-void applyLEDConfig(t);
+void applyLEDConfig();
 void setNetService();
 void apiService();
 void handleAPI();
@@ -28,7 +28,7 @@ void initConfig()
   config["wifi"]["pwd"] = "password";
   config["led"]["power"] = "off";
   config["led"]["num"] = 30;
-  config["led"]["brightness"] = 128;
+  config["led"]["brightness"] = 64;
   config["led"]["same"] = "true";
   config["led"]["color"] = "0xFFFFFF";
 }
@@ -42,7 +42,7 @@ void applyLEDConfig()
     if (config["led"]["same"] == "true")
     {
       std::string color = config["led"]["color"];
-      fill_solid(leds, num, stol(color));
+      fill_solid(leds, num, CRGB::White); //TODO stoi
     }
     else
     {
@@ -69,17 +69,9 @@ void setNetService()
     WiFi.mode(WIFI_AP);
     WiFi.softAPConfig(local_IP, local_IP, IPAddress(255, 255, 255, 0));
     if (!WiFi.softAP(ssid, pwd))
-    {
-      digitalWrite(LED_BUILTIN, LOW);
-      while (1)
-        ;
-    }
+      error();
     if (!dnsServer.start(53, "*", local_IP))
-    {
-      digitalWrite(LED_BUILTIN, LOW);
-      while (1)
-        ;
-    }
+      error();
   }
   else if (mode == "lan")
   {
