@@ -28,7 +28,7 @@ void initConfig()
   config["wifi"]["pwd"] = "password";
   config["led"]["power"] = "off";
   config["led"]["num"] = 30;
-  config["led"]["brightness"] = 64;
+  config["led"]["brightness"] = 2;
   config["led"]["same"] = "true";
   config["led"]["color"] = "0xFFFFFF";
 }
@@ -41,8 +41,17 @@ void applyLEDConfig()
   if (config["led"]["power"] == "on")
     if (config["led"]["same"] == "true")
     {
-      std::string color = config["led"]["color"];
-      fill_solid(leds, num, CRGB::White); //TODO stoi
+      std::string color_str = config["led"]["color"];
+      // TODO stoi can't convert hax
+      // FF0000 green
+      // 00FF00 red
+      // 0000FF bule
+      int color = stoi(color_str,nullptr,16);
+      for (int i = 0; i < num; i++)
+      {
+        leds[i]=color;
+        FastLED.show();
+      }
     }
     else
     {
@@ -50,6 +59,7 @@ void applyLEDConfig()
     }
   else
     fill_solid(leds, num, CRGB::Black);
+  FastLED.show();
 }
 
 void setNetService()
@@ -136,7 +146,6 @@ void handleAPI()
     applyLEDConfig();
   if (netChange || configChange)
     saveConfig();
-  FastLED.show();
 }
 
 void handleNotFound()
