@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="icon" href="./favicon.ico" type="image/icon" />
+    <title>index</title>
+    <link rel="stylesheet" href="index.css" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+      charset="utf-8"
+    />
+  </head>
+  <body>
+    <label class="reset" id="reset">重設</label>
+    <div class="card-row">
+      <div>
+        <label class="switch">
+          <input type="checkbox" id="switch" />
+          <span class="slider round"></span>
+        </label>
+        <div class="colorpick">
+          <input type="color" class="color" id="mycolor" value="#ffcccc" />
+        </div>
+      </div>
+      <label class="lable" id="label"></label>
+      <input class="range" type="range" id="points" max="255" />
+    </div>
+    <div class="card-row">
+      <input class="button" type="button" />
+      <input class="button" type="button" />
+      <input class="button" type="button" />
+      <input class="button" type="button" />
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>
