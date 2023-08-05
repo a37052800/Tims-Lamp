@@ -1,0 +1,30 @@
+{
+    "mode": "/ap/lan",
+    "wifi": {
+        "ssid": "",
+        "pwd": ""
+    },
+    "led": {
+        "power": "on/off",
+        "num": 30,
+        "brightness": 255,
+        "same": "true/false",
+        "color": [
+            [
+                "0xFFFFFF",
+                "0x000123",
+                "0x123456"
+            ],
+            "/0xFFFFFF"
+        ]
+    }
+}
+
+config["mode"] = "ap";
+config["wifi"]["ssid"] = "Lamp_Contorl";
+config["wifi"]["pwd"] = "password";
+config["led"]["power"] = "off";
+config["led"]["num"] = 30;
+config["led"]["brightness"] = 128;
+config["led"]["same"] = "true";
+config["led"]["color"] = "0xFFFFFF";
