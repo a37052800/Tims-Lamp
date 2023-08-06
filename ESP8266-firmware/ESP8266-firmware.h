@@ -42,7 +42,6 @@ void applyLEDConfig()
     if (config["led"]["same"] == "true")
     {
       std::string color_str = config["led"]["color"];
-      // TODO stoi can't convert hax
       // FF0000 green
       // 00FF00 red
       // 0000FF bule

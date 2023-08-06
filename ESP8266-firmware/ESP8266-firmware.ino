@@ -2,7 +2,7 @@
 
 void setup()
 {
-  SPIFFS.format(); //TODO remove this line
+  // SPIFFS.format();
   pinMode(LED_BUILTIN, OUTPUT);
   FastLED.addLeds<WS2812, 2, RGB>(leds, 128);
   SPIFFS.begin();
